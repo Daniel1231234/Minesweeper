@@ -1,2 +1,2 @@
-# myGame
+# Minesweeper
 vanilla javascript game
