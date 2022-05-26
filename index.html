@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,22 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Minesweeper</title>
 </head>
-<body  onload="init()" >
 
-    
-    <div class="table-container">
-        <div class="timer">00:00</div>
-        <table></table>
-    </div>
-    
+<body onload="init()">
+    <h1>Minesweeper</h1>
+
+    <div class="buttons"> </div>
+
+    <table>
+        <div class="timer"> Time: <span>00:00</span></div>
+        <h2 class="live">Lives left: <span></span></h2>
+        <button class="btn-play-again" onclick="restartGame()">😎</button>
+        <tbody class="board"></tbody>
+    </table>
 
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
+    <!-- <footer>@Daniel Shechter</footer> -->
 </body>
+
 </html>

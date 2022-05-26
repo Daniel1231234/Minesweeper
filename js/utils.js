@@ -6,15 +6,11 @@ function createMat(ROWS, COLS) {
   for (var i = 0; i < ROWS; i++) {
     var row = [];
     for (var j = 0; j < COLS; j++) {
-      row.push({
-        isShown: false,
-        isMine: false,
-        isMarked: false,
-      });
+      row.push(EMPTY);
     }
     mat.push(row);
   }
-  return mat;
+  if (ROWS === COLS) return mat;
 }
 
 function getRandomInt(min, max) {
