@@ -1,16 +1,16 @@
 "use strict";
 
-function createMat(ROWS, COLS) {
+function createMat(ROWS) {
   var mat = [];
 
   for (var i = 0; i < ROWS; i++) {
     var row = [];
-    for (var j = 0; j < COLS; j++) {
+    for (var j = 0; j < ROWS[i]; j++) {
       row.push(EMPTY);
     }
     mat.push(row);
   }
-  if (ROWS === COLS) return mat;
+  return mat;
 }
 
 function getRandomInt(min, max) {
