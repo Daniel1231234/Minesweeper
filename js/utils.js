@@ -18,3 +18,18 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+function renderEmoji(value) {
+  var elBtn = document.querySelector(".btn-play-again");
+  elBtn.innerText = value;
+}
+
+function renderRestartButton(emoji) {
+  var elLife = document.querySelector(".btn-play-again");
+  elLife.innerText = emoji;
+}
+
+function createLivesCounter(number) {
+  var elCounter = document.querySelector(".live span");
+  elCounter.innerHTML = number;
+}

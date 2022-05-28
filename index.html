@@ -12,18 +12,22 @@
 <body onload="init()">
     <h1>Minesweeper</h1>
 
-    <div class="buttons"> </div>
+    <div class="buttons">
+        <button class="btn btn-easy" onclick="setLevel(4,2)">Easy</button>
+        <button class="btn btn-medium" onclick="setLevel(8,12)">Medium</button>
+        <button class="btn btn-hard" onclick="setLevel(12,30)">Hard</button>
+    </div>
 
     <table>
         <div class="timer"> <span></span></div>
         <h2 class="live">Lives left: <span></span></h2>
-        <button class="btn-play-again" onclick="restartGame()">😎</button>
+        <button class="btn-play-again" onclick="restartGame(this)">😎</button>
         <tbody class="board"></tbody>
     </table>
 
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
-    <!-- <footer>@Daniel Shechter</footer> -->
+    <footer>© Daniel Shechter</footer>
 </body>
 
 </html>
