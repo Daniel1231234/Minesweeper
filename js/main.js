@@ -118,19 +118,21 @@ function getRandomMines(levelMines, i, j) {
     randMines.push(minePos);
     counter++;
   }
-  console.log(randMines);
+  // console.log(randMines);
+}
+
+function checkWin() {
+  if (gLevel.size ** 2 - gGame.shownCount === gGame.markedCount) {
+    console.log("WIN");
+    winGame();
+  }
 }
 
 function cellClicked(elCell, i, j) {
   var elBtn = document.querySelector(".btn-play-again");
   if (elBtn.innerText === "💀") return;
 
-  if (
-    gGame.markedCount === gLevel.mines &&
-    gLevel.size ** 2 - gGame.shownCount === gGame.markedCount
-  ) {
-    winGame();
-  }
+  checkWin();
 
   if (elCell.innerText === FLAG_IMG) return;
   if (!gGame.isOn) {
@@ -155,7 +157,9 @@ function cellClicked(elCell, i, j) {
   }
 
   var numOfMinesNeg = setMinesNegsCount(i, j);
+
   cell.minesAroundCount = numOfMinesNeg;
+
   elCell.innerText = cell.minesAroundCount;
 
   // console.log("shown: ", gGame.shownCount);
@@ -182,7 +186,7 @@ function cellMarked(elCell, ev, i, j) {
   ev.preventDefault();
 
   var elBtn = document.querySelector(".btn-play-again");
-  if (elBtn.innerText === "💀") return;
+  if (elBtn.innerText === "💀" || elBtn.innerText === "🥇") return;
 
   if (!gGame.isOn) return;
 
@@ -202,12 +206,7 @@ function cellMarked(elCell, ev, i, j) {
     gGame.markedCount--;
   }
 
-  if (
-    gGame.markedCount === gLevel.mines &&
-    gLevel.size ** 2 - gGame.shownCount === gGame.markedCount
-  ) {
-    winGame();
-  }
+  checkWin();
 
   console.log("flagged: ", gGame.markedCount);
 }
@@ -225,7 +224,7 @@ function expandShown(elCell, i, j) {
       gBoard[idxI][idxJ].isShown = true;
       gGame.shownCount++;
 
-      // console.log("shown: ", gGame.shownCount);
+      console.log("shown: ", gGame.shownCount);
       var elNegs = document.querySelector(
         `[data-i="${idxI}"][data-j="${idxJ}"]`
       );
@@ -282,11 +281,7 @@ function removeTimer() {
 }
 
 function winGame() {
-  removeTimer();
+  console.log("winning");
   renderEmoji("🥇");
-  setTimeout =
-    (() => {
-      location.reload();
-    },
-    3000);
+  removeTimer();
 }
