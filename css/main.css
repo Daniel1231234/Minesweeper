@@ -23,6 +23,7 @@ tbody {
     border: none;
     border-radius: 15%;
     background-color: #e1d89f;
+    cursor: pointer;
 }
 
 
@@ -48,6 +49,7 @@ tbody {
     border-radius: 5px;
     background-color: #d89216;
     width: 80px;
+    cursor: pointer;
     margin-left: 15px;
 }
 

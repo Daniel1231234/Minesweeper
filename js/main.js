@@ -14,7 +14,7 @@ var gInterval;
 // initiale conditions
 var gLevel = {
   size: 4, // 8 / 12
-  mines: 2, // 12 // 30
+  mines: 3, // 12 // 30
 };
 
 var gGame = {
@@ -136,9 +136,9 @@ function cellClicked(elCell, i, j) {
 
   if (elCell.innerText === FLAG_IMG) return;
   if (!gGame.isOn) {
+    createTimer();
     getRandomMines(gLevel.mines, i, j);
 
-    createTimer();
 
     gGame.isOn = true;
   }
@@ -260,9 +260,9 @@ function createTimer() {
   var elTimer = document.querySelector(".timer span");
   var counter = 0;
   gInterval = setInterval(() => {
-    counter += 0.01;
-    elTimer.innerHTML = "Timer:   " + counter.toFixed(3);
-  }, 10);
+    counter += 1;
+    elTimer.innerHTML = "Timer:   " + counter.toFixed();
+  }, 1000);
 }
 
 function setLevel(size, mines) {
@@ -284,4 +284,32 @@ function winGame() {
   console.log("winning");
   renderEmoji("🥇");
   removeTimer();
+}
+
+function renderEmoji(value) {
+  var elBtn = document.querySelector(".btn-play-again");
+  elBtn.innerText = value;
+}
+
+function renderRestartButton(emoji) {
+  var elLife = document.querySelector(".btn-play-again");
+  elLife.innerText = emoji;
+}
+
+function createLivesCounter(number) {
+  var elCounter = document.querySelector(".live span");
+  elCounter.innerHTML = number;
+}
+
+function createMat(ROWS) {
+  var mat = [];
+
+  for (var i = 0; i < ROWS; i++) {
+    var row = [];
+    for (var j = 0; j < ROWS[i]; j++) {
+      row.push(EMPTY);
+    }
+    mat.push(row);
+  }
+  return mat;
 }
